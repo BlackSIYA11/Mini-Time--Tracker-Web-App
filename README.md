@@ -1,91 +1,54 @@
-# ⏱️ Mini Time Tracker
+# React + TypeScript + Vite
 
-A simple, user-friendly time tracking application built with **React + TypeScript**. This app allows users to log tasks, track time with a start/pause/resume/stop timer, and view a list of entries with total hours. It's perfect for freelancers, students, or anyone who wants to stay accountable for how they spend their time.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## Tech Stack
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **React** — Frontend UI library for building components
-- **TypeScript** — Adds type safety and better developer experience
-- **Vite** — Modern build tool and development server
-- **UUID** — For generating unique IDs for time entries
-- **CSS** — For styling with clean, responsive design
+## Expanding the ESLint configuration
 
-  
-## ✨ Features
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- ✅ Add new tasks manually or with a timer
-- ⏳ Start, pause, resume, and stop timer-based tracking
-- ✏️ Edit and delete entries with confirmation prompts
-- 📊 View total hours logged
-- 🚫 Input validation for better data accuracy
-- 🎨 Responsive and visually pleasing UI with custom styles
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## 🚀 Getting Started
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-These instructions will get you a copy of the project up and running on your local machine.
-
-### 📦 Prerequisites
-
-Make sure you have the following installed:
-
-- **Node.js** (v16 or higher recommended)  
-- **npm**
-
----
-
-### 🛠️ Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/BlackSIYA11/mini-time-tracker.git
-   cd mini-time-tracker
-
-
-2. Install dependencies
-   
-   Command: npm install
-   
-3. Start the development server:
-
-  Command: npm run dev
-
-4. Open your browser(Chrome or Edge or any browser on your device) and navigate to:
-   
-   http://localhost:5173
-
-
-## 🔍 Assumptions & Trade-offs
-
-📝 Local state only: No backend or persistence. Time entries reset on page refresh.
-
-🧪 No unit tests: Due to time constraints, tests are not included.
-
-🎛 Basic confirmation prompts: Used window.confirm() for simplicity.
-
-💻 Single-user usage: Multi-user support is not implemented.
-
-🚧 What I'd Improve With More Time
-
-**If I had more time to work on this app, I would:**
-
-🔄 Add persistent storage: Use local storage or integrate a simple backend (e.g., Firebase or Express + SQLite).
-
-🧪 Implement automated tests: Add unit and component tests using Jest and React Testing Library.
-
-📱 Make it installable (PWA): Turn it into a progressive web app for convenient mobile time tracking.
-
-👥 User authentication: Allow users to log in and track tasks across devices.
-
-📈 Add analytics/charts: Visualize hours tracked per day/week using chart libraries.
-
-
-## 🙌 Acknowledgements
-This project was built as a personal learning tool and portfolio piece.
-
-Styled using custom CSS for a clean and vibrant interface.
-
-   
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
