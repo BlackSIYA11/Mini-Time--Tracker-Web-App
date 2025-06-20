@@ -90,4 +90,4 @@ const Timer: React.FC<Props> = ({ onAdd }) => {
   );
 };
 
-export default Timer
+export default Timer;
