@@ -12,8 +12,11 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
     "jsx": "react-jsx",
+
+    /* Emit output */
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
 
     /* Linting */
     "strict": true,
