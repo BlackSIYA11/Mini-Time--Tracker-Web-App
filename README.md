@@ -83,7 +83,7 @@ Make sure you have the following installed:
 📈 Add analytics/charts: Visualize hours tracked per day/week using chart libraries.
 
 
-🙌 Acknowledgements
+## 🙌 Acknowledgements
 This project was built as a personal learning tool and portfolio piece.
 
 Styled using custom CSS for a clean and vibrant interface.
